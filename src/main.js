@@ -6,7 +6,7 @@ let clickedEmojis = [];
 let matches = 0;
 
 $playButton.onclick = function () {
-    $playButton.disabled = "true";
+    $playButton.disabled = true;
     setDefaults();
 
     const shuffledEmojis = shuffleEmojis();
@@ -49,7 +49,7 @@ function checkMatch() {
         matches++;
         checkWinner();
     } else {
-        setTimeout(hideEmojis, 350);
+        setTimeout(hideEmojis, 400);
     }
 }
 
@@ -62,13 +62,37 @@ function hideEmojis() {
 
 function checkWinner() {
     if (matches === 4) {
-        $playButton.textContent = "Let's play again";
+        $playButton.textContent = "Play again!";
+        $playButton.disabled = false;
+        startConfetti();
     }
+}
+
+function startConfetti() {
+    const duration = 4000;
+    const end = Date.now() + duration;
+    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
+    (function frame() {
+        confetti({
+            particleCount: 5,
+            angle: Math.random() * 360,
+            spread: Math.random() * 20 + 20,
+            origin: {
+                x: Math.random(),
+                y: Math.random()
+            },
+            colors: colors
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
 }
 
 function setDefaults() {
     $playButton.textContent = "Play";
-    $playButton.disabled = "false";
     matches = 0;
     clickedEmojis = [];
 
