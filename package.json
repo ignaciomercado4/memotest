@@ -1,0 +1,12 @@
+{
+  "name": "memotest",
+  "version": "1.0.0",
+  "description": "memotest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "http-server -p 0" 
+  },
+  "author": "igna",
+  "license": "ISC"
+}
