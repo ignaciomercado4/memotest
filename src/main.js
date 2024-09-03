@@ -3,13 +3,15 @@ const $emojis = document.querySelectorAll(".emoji");
 const $playButton = document.querySelector("#play-button");
 const $attemptsDisplay = document.querySelector("#attempts-display");
 const EMOJI_LIST = ["😎", "🦀", "🤺", "🐱‍👤"];
+
+const SOUND_CLICK = new Audio('audio/click.mp3');
+const SOUND_DISAPPEAR = new Audio('audio/disappearing.mp3');
+const SOUND_VICTORY = new Audio('audio/victory.mp3');
+
 let clickedEmojis = [];
 let matches = 0;
 let attempts = 0;
 
-const soundClick = new Audio('audio/click.mp3');
-const soundDisappear = new Audio('audio/disappearing.mp3');
-const soundVictory = new Audio('audio/victory.mp3');
 
 $playButton.onclick = function () {
     $playButton.disabled = true;
@@ -40,7 +42,7 @@ function handleInput(e) {
         clickedEmojis.length < 2 &&
         e.target.classList.contains("emoji")
     ) {
-        soundClick.play();
+        SOUND_CLICK.play();
 
         clickedEmojis.push(e.target);
         e.target.classList.replace("opacity-0", "opacity-100");
@@ -61,7 +63,7 @@ function checkMatch() {
     } else {
         setTimeout(() => {
             hideEmojis();
-            soundDisappear.play();
+            SOUND_DISAPPEAR.play();
         }, 400);
     }
 }
@@ -78,7 +80,7 @@ function checkWinner() {
         $playButton.textContent = "Play again!";
         $playButton.disabled = false;
         startConfetti();
-        soundVictory.play();
+        SOUND_VICTORY.play();
     }
 }
 
