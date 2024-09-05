@@ -2,7 +2,7 @@ const $gameBoard = document.querySelector(".game-board");
 const $emojis = document.querySelectorAll(".emoji");
 const $playButton = document.querySelector("#play-button");
 const $attemptsDisplay = document.querySelector("#attempts-display");
-const EMOJI_LIST = ["😎", "🦀", "🤺", "🐱‍👤"];
+const EMOJI_LIST = ["😎", "🦀", "🤺", "😼"];
 
 const SOUND_CLICK = new Audio('audio/click.mp3');
 const SOUND_DISAPPEAR = new Audio('audio/disappearing.mp3');
