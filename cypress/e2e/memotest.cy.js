@@ -1,3 +1,5 @@
+/// <reference types="Cypress"/>
+
 describe('Memotest tests', () => {
   beforeEach('Navigates to the website', () => {
     cy.visit('http://127.0.0.1:8080')
